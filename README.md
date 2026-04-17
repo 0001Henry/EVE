@@ -84,7 +84,6 @@ bash recipe/EVE/S_train.sh
 | `PQ_K` | 50 | Priority queue size for code examples |
 | `TOTAL_TRAINING_STEPS` | 10 | Training steps per iteration |
 | `ITER_NUM` | 5 | Number of evolution iterations |
-| `SAMPLE_NUM` | 6 | Samples per prompt |
 
 ## Code Structure
 

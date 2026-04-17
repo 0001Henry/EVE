@@ -15,7 +15,7 @@ Unlike pseudo-label or template-based methods, EVE learns from an **external exe
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/eve.git
+git clone https://github.com/0001Henry/EVE.git
 cd eve
 
 # Create conda environment

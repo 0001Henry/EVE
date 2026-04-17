@@ -1,0 +1,89 @@
+hydra:
+  searchpath:
+    - file://verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+data:
+  train_batch_size: 128
+  val_batch_size: 128
+  max_prompt_length: 4096
+  max_response_length: 4096
+  return_raw_chat: True
+  filter_overlong_prompts: False
+  return_multi_modal_inputs: False
+  custom_cls:
+    path: "recipe/EVE/CS.py"
+    name: CustomRLHFDataset
+
+algorithm:
+  adv_estimator: grpo
+  # kl_ctrl:
+  #   kl_coef: 0.0    
+
+actor_rollout_ref:
+  model:
+    use_remove_padding: False
+    use_fused_kernels: True
+    enable_gradient_checkpointing: True
+  actor:
+    use_dynamic_bsz: False
+    optim:
+      lr: 1e-6
+    ppo_mini_batch_size: 128
+    ppo_micro_batch_size_per_gpu: 1
+    use_kl_loss: True
+    kl_loss_coef: 0.001
+    kl_loss_type: low_var_kl
+    checkpoint:
+      save_contents:
+        - model
+        - hf_model
+        - optimizer
+        - extra
+    ulysses_sequence_parallel_size: 1
+    freeze_vision_tower: False
+    strategy: fsdp
+    fsdp_config:
+      param_offload: False
+      optimizer_offload: False
+  rollout:
+    log_prob_micro_batch_size_per_gpu: 1
+    tensor_model_parallel_size: 1
+    name: vllm
+    engine_kwargs:
+      vllm:
+        disable_mm_preprocessor_cache: True
+    gpu_memory_utilization: 0.5
+    temperature: 1.0
+    enforce_eager: False
+    free_cache_engine: True
+    enable_chunked_prefill: True
+    val_kwargs:
+      n: 2
+  ref:
+    log_prob_micro_batch_size_per_gpu: 1
+    fsdp_config:
+      param_offload: False
+
+# reward_model:
+#   reward_manager: naive
+#   launch_reward_fn_async: False
+
+trainer:
+  total_training_steps: 10
+  critic_warmup: 0
+  logger:
+    - console
+    - tensorboard
+  total_epochs: 100
+  save_freq: 5
+  test_freq: 0
+  val_before_train: False
+  max_actor_ckpt_to_keep: 2
+
+custom_reward_function:
+  path: "recipe/EVE/CS.py"
+  name: compute_score

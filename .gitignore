@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Data & checkpoints
+output/
+myoutput/
+*.ckpt
+*.pt
+*.bin
+*.safetensors
+
+# Logs
+*.log
+wandb/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Env
+.env

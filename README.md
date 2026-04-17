@@ -96,7 +96,7 @@ EVE/
 │   ├── C_train.sh             # Challenger training script
 │   ├── S_train.sh             # Solver training script
 │   ├── sandbox.py             # Code execution sandbox
-│   ├── make_code_pq.py        # Priority queue construction
+│   ├── make_code_pq.py        # Priority queue initialization script
 │   ├── gen_S_data_from_C.py   # Generate Solver data from Challenger output
 │   ├── prepare_rl_data.py     # Data preprocessing pipeline
 │   └── configs/grpo.yaml      # Training configuration
@@ -105,7 +105,6 @@ EVE/
 │   └── utils/
 │       ├── cs_sandbox.py      # Sandbox utilities
 │       ├── cs_prompts.py      # System/user prompts
-│       └── cs_tools.py        # Evaluation tools
 └── VLMEvalKit/                # Evaluation suite
 ```
 

@@ -119,17 +119,21 @@ bash qwen3vl_8b_eval.sh
 ```
 
 
-<!-- ## Citation
+## Citation
 
 If you find this work useful, please cite:
 
 ```bibtex
-@inproceedings{eve2026,
-  title     = {EVE: Verifiable Self-Evolution of MLLMs via Executable Visual Transformations},
-  booktitle = {Proceedings of the 34th ACM International Conference on Multimedia},
-  year      = {2026}
+@misc{heng2026eveverifiableselfevolutionmllms,
+      title={EVE: Verifiable Self-Evolution of MLLMs via Executable Visual Transformations}, 
+      author={Yongrui Heng and Chaoya Jiang and Han Yang and Shikun Zhang and Wei Ye},
+      year={2026},
+      eprint={2604.18320},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2604.18320}, 
 }
-``` -->
+```
 
 ## Acknowledgments
 

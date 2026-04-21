@@ -46,8 +46,8 @@ python3 -m verl.trainer.main_ppo \
     trainer.project_name=${PROJECT_NAME} \
     trainer.experiment_name=${experiment_name} \
     trainer.default_local_dir=${SAVE_CHECKPOINT_DIR}/${PROJECT_NAME}/${experiment_name} \
-    trainer.val_only=${VAL_ONLY} \
-    trainer.val_before_train=${VAL_ONLY}
+    trainer.val_only=False \
+    trainer.val_before_train=f=False
 
 sleep 5
 pkill -f verl.trainer.main_ppo
